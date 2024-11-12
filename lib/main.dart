@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:indica_filmes/colors.dart';
-import 'package:indica_filmes/home_screen.dart';
+import 'package:indica_filmes/screens/home_screen.dart';
 
 
 void main() {

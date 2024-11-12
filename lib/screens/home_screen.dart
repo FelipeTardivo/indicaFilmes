@@ -1,14 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:indica_filmes/widgets/filmes_slider.dart';
-
-import 'widgets/tendencias_slider.dart';
+import 'package:indica_filmes/api/api.dart';
+import 'package:indica_filmes/models/movie.dart';
+import 'package:indica_filmes/widgets/movies_slider.dart';
+import '../widgets/trending_slider.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
+}
+late Future<List<Movie>> trendingMovies;
+
+
+void initState() {
+  trendingMovies = Api().getTrendingMovies();
 }
 
 class _HomeScreenState extends State<HomeScreen> {
@@ -59,8 +66,6 @@ class _HomeScreenState extends State<HomeScreen> {
               const SizedBox(height: 32),
               const FilmeSlider(),
             ],
-            //Container(height: 300, width: 300, color: Colors.amber,)],
-            // A linha acima é apenas para visualizar o espaço que será ocupado
           ),
         ),
       ),
