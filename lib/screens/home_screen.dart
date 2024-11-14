@@ -11,14 +11,26 @@ class HomeScreen extends StatefulWidget {
   @override
   State<HomeScreen> createState() => _HomeScreenState();
 }
-late Future<List<Movie>> trendingMovies;
 
+late Future<List<Movie>> trendingMovies;
 
 void initState() {
   trendingMovies = Api().getTrendingMovies();
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  late Future<List<Movie>> trendingMovies;
+  late Future<List<Movie>> topRatedMovies;
+  late Future<List<Movie>> upcomingMovies;
+
+  @override
+  void initState() {
+    super.initState();
+    trendingMovies = Api().getTrendingMovies();
+    topRatedMovies = Api().getTopRatedMovies();
+    upcomingMovies = Api().getUpcomingMovies();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -42,29 +54,86 @@ class _HomeScreenState extends State<HomeScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                'Tendências',
+                'Em Alta',
                 style: GoogleFonts.aBeeZee(fontSize: 25),
               ),
               const SizedBox(height: 32),
-              const TendenciasSlider(),
+              SizedBox(
+                child: FutureBuilder(
+                  future: trendingMovies,
+                  builder: (context, snapshot) {
+                    if (snapshot.hasError) {
+                      return Center(
+                        child: Text(snapshot.error.toString()),
+                      );
+                    } else if (snapshot.hasData) {
+                      return TrendingSlider(
+                        snapshot: snapshot,
+                      );
+                    } else {
+                      return const Center(
+                        child: CircularProgressIndicator(),
+                      );
+                    }
+                  },
+                ),
+              ),
               const SizedBox(height: 32),
               Text(
-                'Em alta',
+                'Melhores Avaliações',
                 style: GoogleFonts.aBeeZee(
                   fontSize: 25,
                 ),
               ),
               const SizedBox(height: 32),
-              const FilmeSlider(),
+              SizedBox(
+                child: FutureBuilder(
+                  future: topRatedMovies,
+                  builder: (context, snapshot) {
+                    if (snapshot.hasError) {
+                      return Center(
+                        child: Text(snapshot.error.toString()),
+                      );
+                    } else if (snapshot.hasData) {
+                      return MovieSlider(
+                        snapshot: snapshot,
+                      );
+                    } else {
+                      return const Center(
+                        child: CircularProgressIndicator(),
+                      );
+                    }
+                  },
+                ),
+              ),
               const SizedBox(height: 32),
               Text(
-                'Chegando em breve',
+                'Chegando em Breve',
                 style: GoogleFonts.aBeeZee(
                   fontSize: 25,
                 ),
               ),
               const SizedBox(height: 32),
-              const FilmeSlider(),
+              SizedBox(
+                child: FutureBuilder(
+                  future: upcomingMovies,
+                  builder: (context, snapshot) {
+                    if (snapshot.hasError) {
+                      return Center(
+                        child: Text(snapshot.error.toString()),
+                      );
+                    } else if (snapshot.hasData) {
+                      return MovieSlider(
+                        snapshot: snapshot,
+                      );
+                    } else {
+                      return const Center(
+                        child: CircularProgressIndicator(),
+                      );
+                    }
+                  },
+                ),
+              ),
             ],
           ),
         ),
@@ -72,6 +141,3 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 }
-
-
-

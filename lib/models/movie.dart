@@ -25,7 +25,7 @@ class Movie {
       overview: json["overview"],
       posterPath: json["poster_path"],
       relaseDate: json["release_date"],
-      voteAverage: json["vote_average"],
+      voteAverage: json["vote_average"].toDouble(), // convertendo para double evitando erro de tipo
     );
   }
 
