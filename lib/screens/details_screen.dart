@@ -32,7 +32,7 @@ class DetailsScreen extends StatelessWidget {
                   bottomRight: Radius.circular(24),
                 ),
                 child: Image.network(
-                  '${Constants.imagePath}${movie.posterPath}', // backdropPath para fundo sem o logo do filme
+                  '${Constants.imagePath}${movie.posterPath}', // backDropPath para fundo sem o logo do filme
                   filterQuality: FilterQuality.high,
                   fit: BoxFit.fill,
                 ),
@@ -46,9 +46,9 @@ class DetailsScreen extends StatelessWidget {
                 // crossAxisAlignment: CrossAxisAlignment.start, // Alinhar texto à esquerda
                 children: [
                   Text(
-                    'Overview',
+                    'Descrição',
                     style: GoogleFonts.openSans(
-                        fontSize: 25, fontWeight: FontWeight.w800),
+                        fontSize: 25, fontWeight: FontWeight.bold),
                   ),
                   const SizedBox(height: 16),
                   Text(
@@ -73,17 +73,17 @@ class DetailsScreen extends StatelessWidget {
                           child: Row(
                             children: [
                               Text(
-                                'Release Date: ',
+                                'Lançamento: ',
                                 style: GoogleFonts.roboto(
-                                  fontSize: 17,
-                                  fontWeight: FontWeight.w300,
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.bold,
                                 ),
                               ),
                               Text(
                                 movie.relaseDate,
                                 style: GoogleFonts.roboto(
-                                  fontSize: 17,
-                                  fontWeight: FontWeight.w300,
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.bold,
                                 ),
                               ),
                             ],
@@ -100,9 +100,9 @@ class DetailsScreen extends StatelessWidget {
                           child: Row(
                             children: [
                               Text(
-                                'Rating',
+                                'Avaliação: ',
                                 style: GoogleFonts.roboto(
-                                  fontSize: 17,
+                                  fontSize: 15,
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
@@ -113,7 +113,7 @@ class DetailsScreen extends StatelessWidget {
                               Text(
                                 '${movie.voteAverage.toStringAsFixed(1)}/10',
                                 style: GoogleFonts.roboto(
-                                  fontSize: 17,
+                                  fontSize: 15,
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
