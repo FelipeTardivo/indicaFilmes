@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:indica_filmes/api/api.dart';
 import 'package:indica_filmes/models/movie.dart';
 import 'package:indica_filmes/widgets/movies_slider.dart';
+import 'package:indica_filmes/screens/login_screen.dart';
 import '../widgets/trending_slider.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -10,12 +11,6 @@ class HomeScreen extends StatefulWidget {
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
-}
-
-late Future<List<Movie>> trendingMovies;
-
-void initState() {
-  trendingMovies = Api().getTrendingMovies();
 }
 
 class _HomeScreenState extends State<HomeScreen> {
@@ -35,16 +30,23 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        //TODO: fazer um logo para o app e linkar
-        title: Image.asset(
-          'assets/flutflix.png',
-          fit: BoxFit.cover,
-          height: 40,
-          filterQuality: FilterQuality.high,
+        title: Center(
+          child: Image.asset(
+            'assets/flutflix.png',
+            height: 40, // Ajuste a altura conforme necessário
+          ),
         ),
-        centerTitle: true,
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.login),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const LoginScreen()),
+              );
+            },
+          ),
+        ],
       ),
       body: SingleChildScrollView(
         physics: const BouncingScrollPhysics(),
