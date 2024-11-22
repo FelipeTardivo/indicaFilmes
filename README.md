@@ -43,6 +43,8 @@ A resposta vai ser algo como:
 
 curl -X POST -H "Content-Type: application/json" -d '{"user_id":"42"}' http://localhost:5000/recommend
 
+--------------------------
+
 4 - Inicie o aplicativo
 
 Na raiz do aplicativo rode o comendo
