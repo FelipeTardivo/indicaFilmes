@@ -1,6 +1,6 @@
 # FlutFlix
 
-A new Flutter project.
+Projeto de app em Dart/Flutter para indicação de filmes usando TMDB e MovieLens.
 
 ## Rodando o Servidor
 
