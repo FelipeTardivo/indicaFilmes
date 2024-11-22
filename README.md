@@ -6,7 +6,7 @@ Projeto de app em Dart/Flutter para indicação de filmes usando TMDB e MovieLen
 
 Os códigos abaixo funcionam para máquinas Linux
 
-1 - Iniciar TensorFlow Serving
+1 - Iniciar TensorFlow Serving:
 
 sudo docker run -t --rm -p 8501:8501 -p 8500:8500 -v "$(pwd)/:/models/" tensorflow/serving --model_config_file=/models/models.config
 
@@ -19,7 +19,7 @@ A resposta vai ser algo como:
 
 --------------------------
 
-2 - Iniciar o Flask service
+2 - Iniciar o Flask service:
 
 
 sudo FLASK_APP=recommender.py FLASK_ENV=development flask run
@@ -39,7 +39,7 @@ A resposta vai ser algo como:
 
 --------------------------
 
-3 - Comando teste para retorno do backend
+3 - Comando teste para retorno do backend:
 
 curl -X POST -H "Content-Type: application/json" -d '{"user_id":"42"}' http://localhost:5000/recommend
 
@@ -47,6 +47,6 @@ curl -X POST -H "Content-Type: application/json" -d '{"user_id":"42"}' http://lo
 
 4 - Inicie o aplicativo
 
-Na raiz do aplicativo rode o comendo
+Na raiz do aplicativo rode o comando:
 
 flutter run
